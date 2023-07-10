@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <title>Utiköltség szoftver - béta</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- cdnjs source -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h2>Útiköltség szoftver - béta verzió</h2>
+    <p>
+        Útiköltség formanyomtatvány kitöltő szoftver az adminisztratív terhek csökkentése céljából.
+        <br>
+        Kérem pontosan és sorrendben kövesse a továbbiakban leírt lépéseket!
+        <br>
+        Amennyiben az adatok formátumának beadásában hibát vét, úgy a program nem fog megfelelően működni.
+    </p>
+    Készült a Fonyódi Városüzemeltetés "munkába járás elszámolása (személygépkocsira vonatkozóan)" című űrlapjához.
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>1. lépés</h3>
+            <p>Első lépésként az űrlap táblázatát kell kitöltenünk.</p>
+            <p>Nagyon fontos, hogy az adott hónap napjait jó formátumban adja meg!</p>
+            <p>Az alapértelmezett kitöltés azt jelenti, hogy ha a mezőben szereplő példa megfelel Önnek,
+                akkor nem kell semmit begépelnie.</p>
+            <form id="my-form">
+                <div class="mb-3">
+                    <label>Az elszámolandó ÉV és HÓNAP:</label>
+                    <input type="text" class="form-control" id="calcDate" name="calcDate" placeholder="Formátum: 2023.07">
+                    <p></p>
+                </div>
+                <div class="mb-3">
+                    <label>A hónapban dolgozott naptári napok számokkal:</label>
+                    <p>
+                        Például ha adott hó elsején és negyedikén dolgozott: <br>
+                        1, 4 <br>
+                        (Mivel fontos a vesszőkkel és szóközökkel való <br>
+                        helyes tagolás, ezért pontosan kövesse a formátumot!)
+                    </p>
+                    <input type="text" class="form-control" id="date" name="date" placeholder="Formátum: 1, 2, 3 ...">
+                    <p></p>
+                </div>
+                <div class="mb-3">
+                    <label>Távolság:</label>
+                    <p>(a formátum egyben alapértelmezett kitöltés is)</p>
+                    <input type="text" class="form-control" id="distance" name="distance" placeholder="Formátum: 2 × 8 = 16 km">
+                    <p></p>
+                </div>
+                <div class="mb-3">
+                    <label>Elszámolható:</label>
+                    <p>(a formátum egyben alapértelmezett kitöltés is)</p>
+                    <input type="text" class="form-control" id="pay" name="pay" placeholder="Formátum: 16 km × 30 Ft = 480 Ft">
+                    <p></p>
+                </div>
+                <p></p>
+                <center><button id="secondBtn" type="submit" class="btn btn-primary">Mentés</button></center>
+            </form>
+            <p></p>
+        </div>
+        <div class="col-sm-4">
+            <h3>2. lépés</h3>
+            <p>
+                Második lépésként az űrlapra kerülő nevet, lakcímet kell megadni. Illetve a táblázatban szereplő
+                egy sor út költségét a könnyebb számítás érdekében.
+            </p>
+            <form id="my-form-2">
+                <div class="mb-3">
+                    <label>Kérem az X értékét (X = Elszámolható km x 30Ft):</label>
+                    <p>(a formátum egyben alapértelmezett kitöltés is)</p>
+                    <input type="number" class="form-control" id="sumMoney" name="sumMoney" placeholder="Formátum: 480">
+                    <p></p>
+                </div>
+                <div class="mb-3">
+                    <label>Személynév:</label>
+                    <input type="text" class="form-control" id="personName" name="personName" placeholder="Teljes név">
+                    <p></p>
+                </div>
+                <div class="mb-3">
+                    <label>Lakcím:</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Teljes lakcím">
+                    <p></p>
+                </div>
+                <p></p>
+                <center><button id="firstBtn" type="submit" class="btn btn-primary">Mentés</button></center>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h3>3. lépés</h3>
+            <p>Amennyiben helyesen követte az eddigi lépéseket úgy most várja önt a
+                megfelelően elkészült, kitöltött űrlapja. Melyet a következő gombbal tölthet
+                le PDF formátumban.
+            </p>
+            <p>
+                Önnek további teendője nincs. Azonban ha az űrlap nem helyes, kérem az oldal
+                újratöltése után próbálkozzon az újbóli kitöltéssel.
+            </p>
+            <p>
+                Fontos megjegyezni, hogy ez a letöltés funkció egyben törli is az elemeket az adatbázisból.
+                Következésképp az elkészült dokumentum letöltése mindenképp szükséges a program újbóli, helyes
+                működéséhez.
+            </p>
+            <p></p>
+            <center><a href="http://localhost:8080/jasperpdf/export" class="btn btn-primary">Elkészült jelentés letöltése</a></center>
+        </div>
+    </div>
+</div>
+
+<footer><center>
+    <br>
+    <p>Készítette: Király Márk, 2023 július (nem tökéletes, azaz béta verzió) </p>
+    <p><a href="https://github.com/ProgrammerGnome">A program forráskódja ide kattintva megtekinthető GitHub-on.</a></p>
+    <p>Használt főbb technológiák: Java, Spring, Backbone.js, PostgreSQL, JasperReports</p>
+</center></footer>
+
+</body>
+</html>
