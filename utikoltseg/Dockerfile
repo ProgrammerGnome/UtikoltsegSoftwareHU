@@ -1,6 +1,7 @@
 FROM openjdk:17-alpine as build
 WORKDIR /app
 COPY . /app
+RUN chmod +x ./mvnw
 RUN ./mvnw clean install
 
 FROM openjdk:17-alpine
