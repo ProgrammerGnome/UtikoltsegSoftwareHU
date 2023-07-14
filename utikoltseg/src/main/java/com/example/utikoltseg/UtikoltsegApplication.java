@@ -3,8 +3,7 @@ package com.example.utikoltseg;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@SpringBootApplication
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication
 public class UtikoltsegApplication {
 
 	public static void main(String[] args) {
