@@ -8,6 +8,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 COPY --from=build /app/target/utikoltseg-0.0.1-SNAPSHOT.jar app.jar
 COPY src/main/webapp /app/webapp
+COPY src/main/resources /app/resources
 COPY src/main/resources/application.properties application.properties
 
 EXPOSE 8080
