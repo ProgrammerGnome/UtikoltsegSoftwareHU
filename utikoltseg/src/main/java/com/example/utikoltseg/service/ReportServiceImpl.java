@@ -28,7 +28,7 @@ public class ReportServiceImpl {
         //File file = ResourceUtils.getFile("classpath:utikoltseg.jrxml");
         File file = new File("/app/resources/utikoltseg.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/utikoltseg","postgres","postgres");
+        Connection con = DriverManager.getConnection("jdbc:postgresql://dpg-cioqadp8g3n8bq23qe1g-a.frankfurt-postgres.render.com:5432/utikoltseg_a9ul","utikoltseg_a9ul_user","EIrQRIXHu6gTfQZcUU9Nir9x9qOTWUVH");
         Map<String, Object> parameters = new HashMap<>();
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con);
         JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
