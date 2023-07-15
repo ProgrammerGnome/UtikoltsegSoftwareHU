@@ -25,7 +25,7 @@ public class ReportServiceImpl {
     @SneakyThrows
     public void exportJasperReport(HttpServletResponse response) throws JRException, IOException {
         List<WorkDayModel> address = workDayRepository.findAll();
-        //File file = ResourceUtils.getFile("classpath:utikoltseg.jrxml");
+        //File file = ResourceUtils.getFile("classpath:utikoltsegRender.jrxml");
         File file = new File("/app/resources/utikoltseg.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         Connection con = DriverManager.getConnection("jdbc:postgresql://dpg-cioqadp8g3n8bq23qe1g-a.frankfurt-postgres.render.com:5432/utikoltseg_a9ul","utikoltseg_a9ul_user","EIrQRIXHu6gTfQZcUU9Nir9x9qOTWUVH");
