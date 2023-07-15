@@ -5,7 +5,8 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17-jdk-alpine
-RUN apk add --no-cache freetype ttf-dejavu
+#RUN apk add --no-cache freetype ttf-dejavu
+RUN apk add --no-cache ttf-dejavu
 WORKDIR /app
 COPY --from=build /app/target/utikoltseg-0.0.1-SNAPSHOT.jar app.jar
 COPY src/main/webapp /app/webapp
