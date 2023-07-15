@@ -8,8 +8,9 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 COPY --from=build /app/target/utikoltseg-0.0.1-SNAPSHOT.jar app.jar
 COPY src/main/webapp /app/webapp
-COPY src/main/resources /app/resources
+COPY src/main/resources/static/index.js /app/resources/static/index.js
 COPY src/main/resources/application.properties application.properties
+COPY src/main/resources/utikoltseg.jrxml /app/resources/utikoltseg.jrxml
 
 EXPOSE 8080
 CMD java -jar app.jar --spring.config.location=application.properties
