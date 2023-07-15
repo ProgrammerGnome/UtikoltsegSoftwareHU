@@ -25,7 +25,7 @@ public class ReportServiceImpl {
     @SneakyThrows
     public void exportJasperReport(HttpServletResponse response) throws JRException, IOException {
         List<WorkDayModel> address = workDayRepository.findAll();
-        File file = ResourceUtils.getFile("classpath:utikoltseg.jrxml");
+        File file = ResourceUtils.getFile("classpath:/utikoltseg.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/utikoltseg","postgres","postgres");
         Map<String, Object> parameters = new HashMap<>();
