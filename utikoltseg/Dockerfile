@@ -10,7 +10,7 @@ COPY --from=build /app/target/utikoltseg-0.0.1-SNAPSHOT.jar app.jar
 COPY src/main/webapp /app/webapp
 COPY src/main/resources/static/index.js /app/static/index.js
 COPY src/main/resources/application.properties /app/application.properties
-COPY src/main/resources/utikoltseg.jrxml /app/utikoltseg.jrxml
+COPY src/main/resources/utikoltseg.jrxml /app/resources/utikoltseg.jrxml
 
 EXPOSE 8080
 CMD java -jar app.jar --spring.config.location=/app/application.properties
